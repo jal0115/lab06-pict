@@ -1,0 +1,6 @@
+From: Valid, ~Frozen, ~Missing
+To: Valid, ~Missing, ~SameAsFrom
+Amount: Normal, ExactBalance, ~Zero, ~OverBalance, ~OverLimit
+Currency: Same, Different
+
+IF [From] = "Missing" THEN [Amount] = "Normal";
