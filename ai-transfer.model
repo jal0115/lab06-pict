@@ -1,0 +1,50 @@
+
+FromExists: YES, NO
+FromStatus: ACTIVE, FROZEN, NA
+ToExists: YES, NO, NA
+SameAccount: SAME, DIFFERENT, NA
+AmountSign: POSITIVE, ZERO, NEGATIVE, NA
+BalanceCheck: SUFFICIENT, INSUFFICIENT, NA
+DailyLimit: WITHIN, EXCEEDED, NA
+Currency: SAME, DIFFERENT, NA
+
+IF [FromExists] = "NO" THEN [FromStatus] = "NA";
+IF [FromExists] = "NO" THEN [ToExists] = "NA";
+IF [FromExists] = "NO" THEN [SameAccount] = "NA";
+IF [FromExists] = "NO" THEN [AmountSign] = "NA";
+IF [FromExists] = "NO" THEN [BalanceCheck] = "NA";
+IF [FromExists] = "NO" THEN [DailyLimit] = "NA";
+IF [FromExists] = "NO" THEN [Currency] = "NA";
+
+IF [FromStatus] = "FROZEN" THEN [ToExists] = "NA";
+IF [FromStatus] = "FROZEN" THEN [SameAccount] = "NA";
+IF [FromStatus] = "FROZEN" THEN [AmountSign] = "NA";
+IF [FromStatus] = "FROZEN" THEN [BalanceCheck] = "NA";
+IF [FromStatus] = "FROZEN" THEN [DailyLimit] = "NA";
+IF [FromStatus] = "FROZEN" THEN [Currency] = "NA";
+
+IF [FromStatus] = "NA" THEN [ToExists] = "NA";
+
+IF [ToExists] = "NO" THEN [SameAccount] = "NA";
+IF [ToExists] = "NO" THEN [AmountSign] = "NA";
+IF [ToExists] = "NO" THEN [BalanceCheck] = "NA";
+IF [ToExists] = "NO" THEN [DailyLimit] = "NA";
+IF [ToExists] = "NO" THEN [Currency] = "NA";
+
+IF [SameAccount] = "SAME" THEN [AmountSign] = "NA";
+IF [SameAccount] = "SAME" THEN [BalanceCheck] = "NA";
+IF [SameAccount] = "SAME" THEN [DailyLimit] = "NA";
+IF [SameAccount] = "SAME" THEN [Currency] = "NA";
+
+IF [AmountSign] = "ZERO" THEN [BalanceCheck] = "NA";
+IF [AmountSign] = "ZERO" THEN [DailyLimit] = "NA";
+IF [AmountSign] = "ZERO" THEN [Currency] = "NA";
+
+IF [AmountSign] = "NEGATIVE" THEN [BalanceCheck] = "NA";
+IF [AmountSign] = "NEGATIVE" THEN [DailyLimit] = "NA";
+IF [AmountSign] = "NEGATIVE" THEN [Currency] = "NA";
+
+IF [BalanceCheck] = "INSUFFICIENT" THEN [DailyLimit] = "NA";
+IF [BalanceCheck] = "INSUFFICIENT" THEN [Currency] = "NA";
+
+IF [DailyLimit] = "EXCEEDED" THEN [Currency] = "NA";
